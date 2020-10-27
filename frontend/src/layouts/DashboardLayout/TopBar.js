@@ -13,6 +13,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import './topbar.css';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -39,6 +40,14 @@ const TopBar = ({
         <RouterLink to="/">
           <Logo />
         </RouterLink>
+        <RouterLink to="/app/account">
+          <div className="heading-title">PROFILE</div>
+        </RouterLink>
+        <RouterLink to="/app/editor">
+        <div className="heading-title">EDITOR</div>
+
+        </RouterLink>
+        
         <Box flexGrow={1} />
         <Hidden mdDown>
 
@@ -46,17 +55,18 @@ const TopBar = ({
             <IconButton style={{ color: 'white' }}>
               <InputIcon />
           </IconButton>
+
         </RouterLink>
 
         </Hidden>
-        <Hidden lgUp>
+        {/* <Hidden lgUp>
           <IconButton
             color="inherit"
             onClick={onMobileNavOpen}
           >
             <MenuIcon />
           </IconButton>
-        </Hidden>
+        </Hidden> */}
       </Toolbar>
     </AppBar>
   );
