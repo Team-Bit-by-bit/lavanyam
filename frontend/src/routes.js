@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
+import EditorView from 'src/views/editor/EditorView';
 import CustomerListView from 'src/views/customer/CustomerListView';
 import DashboardView from 'src/views/reports/DashboardView';
 import LoginView from 'src/views/auth/LoginView';
@@ -18,6 +19,7 @@ const routes = [
     children: [
       { path: 'account', element: <AccountView /> },
       // { path: 'customers', element: <CustomerListView /> },
+      { path: 'editor', element: <EditorView /> },
       { path: 'dashboard', element: <DashboardView /> },
       // { path: 'products', element: <ProductListView /> },
       // { path: 'settings', element: <SettingsView /> },
