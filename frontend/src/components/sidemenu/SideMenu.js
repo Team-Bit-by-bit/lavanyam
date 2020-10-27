@@ -20,6 +20,7 @@ const Sidebar = ({ width, height, children }) => {
       <div
         className="side-bar"
         style={{
+          zIndex: 50,
           position: "absolute",
           transform: `translatex(${xPosition}px)`,
           width: width,

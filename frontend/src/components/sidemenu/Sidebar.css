@@ -16,7 +16,7 @@
     width: 10px;
     position: absolute;
     outline: none;
-    z-index: 1;
+    z-index: 5000;
     background-color: rgba(64, 194, 133, 0.693);
     border-color: rgba(64, 194, 133, 0.693);
     border-left: 0;
