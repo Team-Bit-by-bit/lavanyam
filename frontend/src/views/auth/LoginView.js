@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   Container,
-  Grid,
   Link,
   TextField,
   Typography,
@@ -29,7 +28,7 @@ const LoginView = () => {
 
   const checklogin = ({email,password }) => {
 
-    if(email=='guest@gmail.com' && password=='guest')
+    if(email==='guest@gmail.com' && password==='guest')
         navigate('/app/dashboard', { replace: true });
     else
     {

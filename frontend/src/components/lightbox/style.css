@@ -32,8 +32,8 @@
 }
 .lb-container .lb-header{
     height: 50px;
-    background: #000;
-    background: rgba(0,0,0,0.9);
+    /* background: #000; */
+    background: rgb(122 213 170);
     box-shadow: 0px 1px 5px 0px #111;
     box-sizing: border-box;
     display: flex;

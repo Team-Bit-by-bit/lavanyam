@@ -131,6 +131,10 @@ export default class Lightbox extends React.Component {
         this.stopSideEffect(e);
         this.setState({x:0,y:0,zoom:1,rotate:0});
     };
+    exit = (e) =>{
+        if(typeof this.props.onClose === "function") return this.props.onClose(e);
+        console.error("No Exit function passed on prop: onClose. Clicking the close button will do nothing");
+    }
     
     shouldShowReset = () => (this.state.x || this.state.y || this.state.zoom !== 1 || this.state.rotate !== 0);
     canvasClick = (e) => {

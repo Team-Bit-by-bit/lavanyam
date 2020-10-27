@@ -12,7 +12,7 @@ const Sidebar = ({ width, height, children }) => {
     }
   };
 
-  React.useEffect(() => {
+  React.useEffect((width) => {
     setX(-width);
   }, []);
   return (
