@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink,useNavigate } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -14,6 +14,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 import './topbar.css';
+import Typography from '@material-ui/core/Typography';
+import 'fontsource-aclonica';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -23,19 +25,28 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const TopBar = ({
-  className,
-  onMobileNavOpen,
-  ...rest
-}) => {
+const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      elevation={0}
-      {...rest}
-    >
+    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
+      <AppBar
+        className={clsx(classes.root, className)}
+        style={{
+          position: 'relative',
+          backgroundColor: '#282C31',
+          alignItems: 'center',
+          flexGrow: 1,
+          justifyContent: 'center'
+        }}
+        elevation={8}
+        {...rest}
+      >
+        <Typography style={{ fontFamily: 'Aclonica', color: '#CACACA' }}>
+          lavanyam
+        </Typography>
+      </AppBar>
+
       <Toolbar>
         <RouterLink to="/">
           <Logo />
@@ -44,20 +55,16 @@ const TopBar = ({
           <div className="heading-title">PROFILE</div>
         </RouterLink>
         <RouterLink to="/app/editor">
-        <div className="heading-title">EDITOR</div>
-
+          <div className="heading-title">EDITOR</div>
         </RouterLink>
-        
+
         <Box flexGrow={1} />
         <Hidden mdDown>
-
-        <RouterLink to="/login" style={{ textDecoration: 'none' }}>
+          <RouterLink to="/login" style={{ textDecoration: 'none' }}>
             <IconButton style={{ color: 'white' }}>
               <InputIcon />
-          </IconButton>
-
-        </RouterLink>
-
+            </IconButton>
+          </RouterLink>
         </Hidden>
         {/* <Hidden lgUp>
           <IconButton
