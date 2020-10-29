@@ -18,7 +18,17 @@ import Typography from '@material-ui/core/Typography';
 import 'fontsource-aclonica';
 
 const useStyles = makeStyles(() => ({
-  root: {},
+  titlebar: {
+    position: 'relative',
+    backgroundColor: '#282C31',
+    alignItems: 'center',
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
+  title: {
+    fontFamily: 'Aclonica',
+    color: '#CACACA'
+  },
   avatar: {
     width: 60,
     height: 60
@@ -29,25 +39,18 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
+    <AppBar>
       <AppBar
-        className={clsx(classes.root, className)}
-        style={{
-          position: 'relative',
-          backgroundColor: '#282C31',
-          alignItems: 'center',
-          flexGrow: 1,
-          justifyContent: 'center'
-        }}
-        elevation={8}
+        className={clsx(classes.titlebar, className)}
+        elevation={10}
         {...rest}
       >
-        <Typography style={{ fontFamily: 'Aclonica', color: '#CACACA' }}>
+        <Typography className={clsx(classes.title, className)}>
           lavanyam
         </Typography>
       </AppBar>
 
-      <Toolbar>
+      <Toolbar className={clsx(classes.titlebar, className)}>
         <RouterLink to="/">
           <Logo />
         </RouterLink>
