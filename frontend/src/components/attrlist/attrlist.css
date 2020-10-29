@@ -1,0 +1,9 @@
+.SecondExample
+{
+    width: 500px;
+
+        position: relative;
+        height: 100px;
+        overflow: hidden;
+        padding: 20px;  
+}
