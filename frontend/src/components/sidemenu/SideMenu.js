@@ -47,7 +47,7 @@ const Sidebar = ({ width, height, children }) => {
 
   const handleChange = (event) => {
     console.log(event.target.value);
-};
+  };
 
   React.useEffect((width) => {
     setX(-width);
