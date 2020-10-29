@@ -5,6 +5,8 @@ import Sidebar from '../../components/sidemenu/SideMenu';
 import Lightbox from '../../components/lightbox/LightBox';
 import '../../components/lightbox/style.css';
 
+import AttrList from '../../components/attrlist/AttrList';
+
 import Grid from '@material-ui/core/Grid';
 import './EditorView.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,6 +24,7 @@ import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -210,6 +213,8 @@ const Profile = ({ className, ...rest }) => {
         <h1>Nav Item</h1>
         <h1>Nav Item</h1>
         <h1>Nav Item</h1> */}
+
+        <AttrList></AttrList>
       </Sidebar>
 
       <Grid container spacing={24}>
