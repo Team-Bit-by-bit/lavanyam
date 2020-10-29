@@ -1,10 +1,62 @@
 import './Sidebar.css';
-import React from 'react';
+import React, { useState }  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
+
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Grid from '@material-ui/core/Grid';
+
+import AttrList from '../../components/attrlist/AttrList';
+
+
+
+const Categories = [
+  {
+    value: 'ABC',
+    text: 'ABC'
+  },
+  {
+    value: 'XYZ',
+    text: 'XYZ'
+  },
+  {
+    value: 'PQR',
+    text: 'PQR'
+  }
+];
+
+const Attributes = [
+  {
+    value: 'ABC',
+    text: 'ABC'
+  },
+  {
+    value: 'XYZ',
+    text: 'XYZ'
+  },
+  {
+    value: 'PQR',
+    text: 'PQR'
+  }
+];
+
+function setinitialURL() {
+  return '/static/images/avatars/avatar_6.png';
+}
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,6 +71,10 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: '28ch'
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120
   }
 }));
 
@@ -33,6 +89,34 @@ const handleSearchClick = event => {
 
 const Sidebar = ({ width, height, children }) => {
   const classes = useStyles();
+  
+  const [img_path, changeURL] = useState(() => setinitialURL());
+  const [open, setOpen] = React.useState(false);
+  const [category, setCategory] = React.useState('');
+  const [attribute, setAttribute] = React.useState('');
+
+  const handleCatChange = event => {
+    setCategory(event.target.value || '');
+  };
+
+  const handleAttrChange = event => {
+    setAttribute(event.target.value || '');
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  function handleImgChange(event) {
+    var temp_path = URL.createObjectURL(event.target.files[0]);
+    console.log(temp_path);
+    changeURL(temp_path);
+    console.log('inside');
+  }
 
   const [xPosition, setX] = React.useState(-width);
 
@@ -147,7 +231,7 @@ const Sidebar = ({ width, height, children }) => {
                       labelId="demo-dialog-select-label"
                       id="demo-dialog-select"
                       value={category}
-                      onChange={handleChange}
+                      onChange={handleCatChange}
                       input={<Input />}
                     >
                       <MenuItem value="">
