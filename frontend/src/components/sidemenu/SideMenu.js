@@ -24,7 +24,7 @@ const Sidebar = ({ width, height, children }) => {
           position: "absolute",
           transform: `translatex(${xPosition}px)`,
           width: width,
-          minHeight: height
+          minHeight: height,
         }}
       >
         <button

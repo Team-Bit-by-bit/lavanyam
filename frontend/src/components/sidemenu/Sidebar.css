@@ -5,8 +5,10 @@
     border-right: 1px solid;
     border-radius: 0;
     border-color: rgba(64, 194, 133, 0.693);
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
+    background-color: #cdd0cf;
     transition: 0.8s ease;
+    top: 85px;
 }
 
 .toggle-menu {
