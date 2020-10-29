@@ -10,14 +10,30 @@ import {
   Toolbar,
   makeStyles
 } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import MenuIcon from '@material-ui/icons/Menu';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 import './topbar.css';
 import Typography from '@material-ui/core/Typography';
 import 'fontsource-aclonica';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import EditIcon from '@material-ui/icons/Edit';
+import FormatColorFillIcon from '@material-ui/icons/FormatColorFill';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import SaveIcon from '@material-ui/icons/Save';
+import FolderIcon from '@material-ui/icons/Folder';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  input: {
+    display: 'none',
+  },
   titlebar: {
     position: 'relative',
     backgroundColor: '#282C31',
@@ -35,6 +51,10 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
+const handleChange = (event) => {
+  console.log(event.target.value);
+};
+
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
 
@@ -51,15 +71,69 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
       </AppBar>
 
       <Toolbar className={clsx(classes.titlebar, className)}>
-        <RouterLink to="/">
+        <RouterLink to="/app/dashboard">
           <Logo />
         </RouterLink>
+
         <RouterLink to="/app/account">
-          <div className="heading-title">PROFILE</div>
+          {/* <div className="heading-title">PROFILE</div> */}
+          <div className={classes.root}>
+            {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+              <label htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                <AccountCircleIcon />
+                </IconButton>
+              </label>
+          </div>
         </RouterLink>
+
         <RouterLink to="/app/editor">
-          <div className="heading-title">EDITOR</div>
+          {/* <div className="heading-title">EDITOR</div> */}
+          <div className={classes.root}>
+            {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+              <label htmlFor="icon-button-file">
+                <IconButton color="primary" aria-label="upload picture" component="span">
+                <EditIcon />
+                </IconButton>
+              </label>
+          </div>
         </RouterLink>
+
+        <div className={classes.root}>
+          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
+             <FormatColorFillIcon />
+            </IconButton>
+          </label>
+        </div>
+
+        <div className={classes.root}>
+          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
+             <FileCopyIcon />
+            </IconButton>
+          </label>
+        </div>
+
+        <div className={classes.root}>
+          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
+             <FolderIcon />
+            </IconButton>
+          </label>
+        </div>
+
+        <div className={classes.root}>
+          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
+             <SaveIcon />
+            </IconButton>
+          </label>
+        </div>
 
         <Box flexGrow={1} />
         <Hidden mdDown>
