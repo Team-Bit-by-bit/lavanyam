@@ -34,18 +34,13 @@ const Profile = ({ className, ...rest }) => {
       
         <Grid container spacing={4}>
           <Grid item xs={6}>
-            <Paper>
             <ImageCarousel/>
-            </Paper>
-            
           </Grid>
           <Grid item xs={6}>
-          <Paper>
           <Lightbox
               image="https://source.unsplash.com/iecJiKe_RNg/600x799"
               title="Picture 2"
             />
-          </Paper>
             
           </Grid>
         </Grid>
