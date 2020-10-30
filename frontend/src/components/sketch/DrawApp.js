@@ -188,7 +188,7 @@ class DrawApp extends React.Component {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={this.cursorType}
+              value={this.state.cursorType}
               onChange={e => this.setType(e)}
             >
               <MenuItem value={1}>Draw {this.cursorType}</MenuItem>
