@@ -99,7 +99,7 @@ export default function ImageCarousel() {
   // Modal Classes End
 
   const galleryView = () => (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black",height: "115vh",overflowY: "scroll" }}>
       <Gallery photos={photos} onClick={openLightbox} />
 
       <IconButton color="secondary" onClick={closeLightbox}>
