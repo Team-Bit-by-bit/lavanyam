@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3),
   },
+  input: {
+    display: 'none',
+  },
 }));
 
 
@@ -99,17 +102,21 @@ export default function ImageCarousel() {
   // Modal Classes End
 
   const galleryView = () => (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black",height: "115vh",overflowY: "scroll" }}>
       <Gallery photos={photos} onClick={openLightbox} />
 
-      <IconButton color="secondary" onClick={closeLightbox}>
-        <AddCircleIcon /> 
-      </IconButton>
+      <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+      <label htmlFor="icon-button-file">
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <AddCircleIcon />
+        </IconButton>
+      </label>
+
     </div>
   );
 
   const selectionView = () => (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black",height: "119vh" }}>
       <Carousel
         currentIndex={currentImage}
         views={photos.map((x) => ({
