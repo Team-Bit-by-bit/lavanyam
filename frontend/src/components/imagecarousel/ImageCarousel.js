@@ -116,7 +116,7 @@ export default function ImageCarousel() {
   );
 
   const selectionView = () => (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black",height: "119vh" }}>
       <Carousel
         currentIndex={currentImage}
         views={photos.map((x) => ({
