@@ -30,9 +30,9 @@ var img_path = '/static/images/avatars/avatar_6.png';
 const Profile = ({ className, ...rest }) => {
   return (
     <div>
-      <Sidebar width={300} height={'100vh'} />
+      <Sidebar width={300} height={'86vh'} />
       
-        <Grid container spacing={4}>
+        <Grid container>
           <Grid item xs={6}>
             <ImageCarousel/>
           </Grid>
