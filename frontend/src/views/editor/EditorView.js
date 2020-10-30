@@ -41,7 +41,7 @@ const Profile = ({ className, ...rest }) => {
           </Grid>
           <Grid item xs={6}>
           {/* <Paper> */}
-          <Lightbox
+            <Lightbox
               image="https://source.unsplash.com/iecJiKe_RNg/600x799"
               title="Picture 2"
             />

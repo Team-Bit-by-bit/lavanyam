@@ -54,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3),
   },
+  input: {
+    display: 'none',
+  },
 }));
 
 
@@ -102,9 +105,13 @@ export default function ImageCarousel() {
     <div style={{ backgroundColor: "black" }}>
       <Gallery photos={photos} onClick={openLightbox} />
 
-      <IconButton color="secondary" onClick={closeLightbox}>
-        <AddCircleIcon /> 
-      </IconButton>
+      <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
+      <label htmlFor="icon-button-file">
+        <IconButton color="primary" aria-label="upload picture" component="span">
+          <AddCircleIcon />
+        </IconButton>
+      </label>
+
     </div>
   );
 
