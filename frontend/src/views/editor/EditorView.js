@@ -6,6 +6,7 @@ import '../../components/lightbox/style.css';
 
 import ImageCarousel from '../../components/imagecarousel/ImageCarousel';
 import DrawApp from '../../components/sketch/DrawApp';
+import SketchImage from '../../components/sketch/SketchImage';
 import Grid from '@material-ui/core/Grid';
 import './EditorView.css';
 import 'fontsource-aclonica';
@@ -19,10 +20,12 @@ const Profile = ({ className, ...rest }) => {
     setOpen(!sketch);
   };
 
-  const renderElement = () => {
-    if (sketch) return <DrawApp />;
-    else return <h1>HEllo fhdfhfdhdfhfdfdhdffvcnvc vcbcvvbdfhdhd cfgfhgfhf</h1>;
-  };
+  const renderElement = ()=> {
+    if(sketch)
+       return <DrawApp/>;
+    else
+       return <SketchImage/>;
+ }
 
   return (
     <div style={{ height: '80vh' }}>
