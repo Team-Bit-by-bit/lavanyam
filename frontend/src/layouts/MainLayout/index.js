@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
 import TopBar from './TopBar';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.default,
     display: 'flex',
@@ -14,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: 'flex',
     flex: '1 1 auto',
-    overflow: 'hidden',
-    paddingTop: 64
+    overflow: 'hidden'
   },
   contentContainer: {
     display: 'flex',
@@ -35,13 +34,13 @@ const MainLayout = () => {
   return (
     <div className={classes.root}>
       <TopBar />
-      <div className={classes.wrapper}>
+      {/* <div className={classes.wrapper}>
         <div className={classes.contentContainer}>
-          <div className={classes.content}>
-            <Outlet />
-          </div>
+          <div className={classes.content}> */}
+      <Outlet />
+      {/* </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
