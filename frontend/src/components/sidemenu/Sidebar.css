@@ -23,3 +23,15 @@
     border-color: rgba(64, 194, 133, 0.693);
     border-left: 0;
 }
+
+input[type="file"] {
+    display: none;
+}
+
+.upload-btn{
+    float:right;
+}
+
+.upload-btn:hover{
+    background-color:grey;
+}

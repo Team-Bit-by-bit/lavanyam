@@ -68,7 +68,7 @@ const AttrList = ({ className, ...rest }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{paddingTop: "12px"}}>
 
 
       <Accordion

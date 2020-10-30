@@ -1,5 +1,5 @@
 import './Sidebar.css';
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
@@ -18,10 +18,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import InputBase from '@material-ui/core/InputBase';
 
 import AttrList from '../../components/attrlist/AttrList';
-
-
 
 const Categories = [
   {
@@ -57,7 +57,6 @@ function setinitialURL() {
   return '/static/images/avatars/avatar_6.png';
 }
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -76,6 +75,13 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     minWidth: 120
   },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1
+  },
+  iconButton: {
+    padding: 10
+  }
 }));
 
 let searchFieldText = '';
@@ -89,7 +95,7 @@ const handleSearchClick = event => {
 
 const Sidebar = ({ width, height, children }) => {
   const classes = useStyles();
-  
+
   const [img_path, changeURL] = useState(() => setinitialURL());
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('');
@@ -119,6 +125,11 @@ const Sidebar = ({ width, height, children }) => {
   }
 
   const [xPosition, setX] = React.useState(-width);
+  const [age, setAge] = React.useState('');
+
+  const handleAgeChange = event => {
+    setAge(event.target.value);
+  };
 
   const toggleMenu = () => {
     if (xPosition < 0) {
@@ -154,21 +165,10 @@ const Sidebar = ({ width, height, children }) => {
             transform: `translate(${width}px, 40vh)`
           }}
         ></button>
-        <div className="content" style={{overflowY: "scroll",
-    height: "100%",
-    overflowX: "hidden"}}>
-          <form className={classes.root} noValidate autoComplete="off">
-            <div>
-              <TextField
-                id="standard-select-currency"
-                select
-                label="Filter"
-                onChange={handleChange}
-                // helperText="Please select your currency"
-              ></TextField>
-            </div>
-          </form>
-
+        <div
+          className="content"
+          style={{ overflowY: 'scroll', height: '100%', overflowX: 'hidden' }}
+        >
           <div style={{ backgroundColor: 'white', flexGrow: 1 }}>
             <Grid container spacing={2} style={{ margin: 0, height: '50px' }}>
               <Grid item xs={6} sm={4}>
@@ -184,6 +184,29 @@ const Sidebar = ({ width, height, children }) => {
               </Grid>
               <Grid item xs={6} sm={4}>
                 {/* search bar */}
+                <FormControl
+                  className={classes.formControl}
+                  style={{ marginTop: '-5px' }}
+                >
+                  <InputLabel id="demo-simple-select-autowidth-label">
+                    Category
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-autowidth-label"
+                    id="demo-simple-select-autowidth"
+                    value={age}
+                    onChange={handleAgeChange}
+                    autoWidth
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {Categories.map(type => (
+                      <MenuItem value={type.value}>{type.text}</MenuItem>
+                    ))}
+                  
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={6} sm={4}>
                 <label htmlFor="file-upload">
@@ -207,8 +230,45 @@ const Sidebar = ({ width, height, children }) => {
             </Grid>
           </div>
 
+          {/* 
+          <TextField
+            id="outlined-margin-dense"
+            label="Search"
+            className={classes.searchField}
+            margin="dense"
+            variant="outlined"
+            onChange={handleSearchTextChange}
+          />
+          <IconButton aria-label="search" >
+            <SearchIcon />
+           </IconButton> */}
+
           <div>
-            <Button
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper
+                  component="form"
+                  className={classes.root}
+                  style={{ paddingTop: 'inherit' }}
+                >
+                  <InputBase
+                    className={classes.input}
+                    placeholder="Search Attribute"
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                  <IconButton
+                    type="submit"
+                    onClick={handleSearchClick}
+                    className={classes.iconButton}
+                    aria-label="search"
+                  >
+                    <SearchIcon />
+                  </IconButton>
+                </Paper>
+              </Grid>
+            </Grid>
+
+            {/* <Button
               onClick={handleClickOpen}
               variant="outlined"
               color="primary"
@@ -274,21 +334,9 @@ const Sidebar = ({ width, height, children }) => {
                   Ok
                 </Button>
               </DialogActions>
-            </Dialog>
+            </Dialog> */}
           </div>
           <AttrList></AttrList>
-
-          <TextField
-            id="outlined-margin-dense"
-            label="Search"
-            className={classes.searchField}
-            margin="dense"
-            variant="outlined"
-            onChange={handleSearchTextChange}
-          />
-          <IconButton aria-label="search" onClick={handleSearchClick}>
-            <SearchIcon />
-          </IconButton>
         </div>
       </div>
     </React.Fragment>
