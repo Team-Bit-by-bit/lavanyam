@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120
-  }
+  },
 }));
 
 let searchFieldText = '';
@@ -154,7 +154,9 @@ const Sidebar = ({ width, height, children }) => {
             transform: `translate(${width}px, 40vh)`
           }}
         ></button>
-        <div className="content">
+        <div className="content" style={{overflowY: "scroll",
+    height: "100%",
+    overflowX: "hidden"}}>
           <form className={classes.root} noValidate autoComplete="off">
             <div>
               <TextField

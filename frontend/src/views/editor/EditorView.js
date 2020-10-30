@@ -30,22 +30,22 @@ var img_path = '/static/images/avatars/avatar_6.png';
 const Profile = ({ className, ...rest }) => {
   return (
     <div>
-      <Sidebar width={300} height={'100vh'} />
+      <Sidebar width={300} height={'86vh'} />
       
-        <Grid container spacing={4}>
-          <Grid item xs={6}>
-            <Paper>
+        <Grid container spacing={4} style={{width:"100%"}}>
+          <Grid item xs={6} style={{padding:"0px"}}>
+            {/* <Paper> */}
             <ImageCarousel/>
-            </Paper>
+            {/* </Paper> */}
             
           </Grid>
           <Grid item xs={6}>
-          <Paper>
+          {/* <Paper> */}
           <Lightbox
               image="https://source.unsplash.com/iecJiKe_RNg/600x799"
               title="Picture 2"
             />
-          </Paper>
+          {/* </Paper> */}
             
           </Grid>
         </Grid>
