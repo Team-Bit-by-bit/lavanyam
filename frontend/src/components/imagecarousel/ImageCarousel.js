@@ -8,6 +8,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 // Changes required
 //     Component should appear with proper padding on all four sides
+//     Extra horizontal scroll bar to be removed
 //     Add a button in selection view to see the list of all garments in currently viewed picture
 //     Add two buttons to (i)transer garment (ii)transfer shape (iii)transfer colour of garment selected in photo
 //     Add a proper button to switch from selection view to gallery view (currently shopping cart icon button used)
