@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   titlebar: {
-    position: 'relative',
+    position: 'static',
     backgroundColor: '#282C31',
     alignItems: 'center',
     flexGrow: 1,

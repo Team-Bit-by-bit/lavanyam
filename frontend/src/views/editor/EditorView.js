@@ -5,12 +5,14 @@ import Sidebar from '../../components/sidemenu/SideMenu';
 import Lightbox from '../../components/lightbox/LightBox';
 import '../../components/lightbox/style.css';
 
+import ImageCarousel from '../../components/imagecarousel/ImageCarousel';
+
 import AttrList from '../../components/attrlist/AttrList';
 
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import './EditorView.css';
 import 'fontsource-aclonica';
-
 
 // const useStyles = makeStyles(theme => ({
 //   container: {
@@ -23,26 +25,31 @@ import 'fontsource-aclonica';
 //   }
 // }));
 
-var img_path = "/static/images/avatars/avatar_6.png";
+var img_path = '/static/images/avatars/avatar_6.png';
 
 const Profile = ({ className, ...rest }) => {
-  
-
   return (
     <div>
-      <Sidebar width={300} height={'100vh'}/>
+      <Sidebar width={300} height={'100vh'} />
       
-      <Grid container spacing={24}>
-        <Grid item xs={6}>
-          <Lightbox image={img_path} title="Picture 1"></Lightbox>
-        </Grid>
-        <Grid item xs={6}>
+        <Grid container spacing={4}>
+          <Grid item xs={6}>
+            <Paper>
+            <ImageCarousel/>
+            </Paper>
+            
+          </Grid>
+          <Grid item xs={6}>
+          <Paper>
           <Lightbox
-            image="/static/images/avatars/avatar_6.png"
-            title="Picture 2"
-          ></Lightbox>
+              image="https://source.unsplash.com/iecJiKe_RNg/600x799"
+              title="Picture 2"
+            />
+          </Paper>
+            
+          </Grid>
         </Grid>
-      </Grid>
+      
     </div>
   );
 };
