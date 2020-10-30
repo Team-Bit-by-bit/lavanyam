@@ -10,9 +10,7 @@ import {
   Toolbar,
   makeStyles
 } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import MenuIcon from '@material-ui/icons/Menu';
+
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
 import './topbar.css';
@@ -25,14 +23,9 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import SaveIcon from '@material-ui/icons/Save';
 import FolderIcon from '@material-ui/icons/Folder';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
+const useStyles = makeStyles(theme => ({
   input: {
-    display: 'none',
+    display: 'none'
   },
   titlebar: {
     position: 'static',
@@ -48,10 +41,13 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: 60,
     height: 60
+  },
+  button: {
+    color: '#CACACA'
   }
 }));
 
-const handleChange = (event) => {
+const handleChange = event => {
   console.log(event.target.value);
 };
 
@@ -59,10 +55,10 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <AppBar>
+    <AppBar position="sticky" elevation={8}>
       <AppBar
         className={clsx(classes.titlebar, className)}
-        elevation={10}
+        elevation={8}
         {...rest}
       >
         <Typography className={clsx(classes.title, className)}>
@@ -71,86 +67,54 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
       </AppBar>
 
       <Toolbar className={clsx(classes.titlebar, className)}>
-        <RouterLink to="/app/dashboard">
-          <Logo />
-        </RouterLink>
-
         <RouterLink to="/app/account">
-          {/* <div className="heading-title">PROFILE</div> */}
-          <div className={classes.root}>
-            {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-              <label htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                <AccountCircleIcon />
-                </IconButton>
-              </label>
-          </div>
+          <label htmlFor="icon-button-file">
+            <IconButton className={clsx(classes.button, className)}>
+              <AccountCircleIcon />
+            </IconButton>
+          </label>
         </RouterLink>
 
         <RouterLink to="/app/editor">
-          {/* <div className="heading-title">EDITOR</div> */}
-          <div className={classes.root}>
-            {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-              <label htmlFor="icon-button-file">
-                <IconButton color="primary" aria-label="upload picture" component="span">
-                <EditIcon />
-                </IconButton>
-              </label>
-          </div>
+          <label htmlFor="icon-upload-picture">
+            <IconButton className={clsx(classes.button, className)}>
+              <EditIcon />
+            </IconButton>
+          </label>
         </RouterLink>
 
-        <div className={classes.root}>
-          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
-             <FormatColorFillIcon />
-            </IconButton>
-          </label>
-        </div>
+        <label htmlFor="icon-button-file">
+          <IconButton className={clsx(classes.button, className)} onClick={handleChange}>
+            <FormatColorFillIcon />
+          </IconButton>
+        </label>
 
-        <div className={classes.root}>
-          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
-             <FileCopyIcon />
-            </IconButton>
-          </label>
-        </div>
+        <label htmlFor="icon-button-file">
+          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+            <FileCopyIcon />
+          </IconButton>
+        </label>
 
-        <div className={classes.root}>
-          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
-             <FolderIcon />
-            </IconButton>
-          </label>
-        </div>
+        <label htmlFor="icon-button-file">
+          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+            <FolderIcon />
+          </IconButton>
+        </label>
 
-        <div className={classes.root}>
-          {/* <input accept="image/*" className={classes.input} id="icon-button-file" type="file" /> */}
-          <label htmlFor="icon-button-file">
-            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleChange}>
-             <SaveIcon />
-            </IconButton>
-          </label>
-        </div>
+        <label htmlFor="icon-button-file">
+          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+            <SaveIcon />
+          </IconButton>
+        </label>
 
         <Box flexGrow={1} />
         <Hidden mdDown>
           <RouterLink to="/login" style={{ textDecoration: 'none' }}>
-            <IconButton style={{ color: 'white' }}>
+            <IconButton className={clsx(classes.button, className)}>
               <InputIcon />
             </IconButton>
           </RouterLink>
         </Hidden>
-        {/* <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onMobileNavOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Hidden> */}
       </Toolbar>
     </AppBar>
   );

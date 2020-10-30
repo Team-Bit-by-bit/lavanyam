@@ -13,45 +13,36 @@ import IconButton from '@material-ui/core/IconButton';
 import SwitchCameraSharpIcon from '@material-ui/icons/SwitchCameraSharp';
 
 const Profile = ({ className, ...rest }) => {
-
   const [sketch, setOpen] = React.useState(false);
-  
+
   const changeRightview = () => {
-    if(sketch){
-      setOpen(false);
-    }
-    else
-    {
-    setOpen(true);
-    }
+    setOpen(!sketch);
   };
 
-  const renderElement = ()=> {
-    if(sketch)
-       return <DrawApp/>;
-    else
-       return <h1>HEllo</h1>;
- }
+  const renderElement = () => {
+    if (sketch) return <DrawApp />;
+    else return <h1>HEllo fhdfhfdhdfhfdfdhdffvcnvc vcbcvvbdfhdhd cfgfhgfhf</h1>;
+  };
 
   return (
-    <div>
-      <Sidebar width={300} height={'86vh'} />
-      
-        <Grid container spacing={4} style={{width:"100%"}}>
-          <Grid item xs={6} style={{padding:"0px",paddingTop: "40px"}}>
-            <ImageCarousel/>
-            
-          </Grid>
-          <Grid item xs={6} style={{padding:"0px"}}>
-          <IconButton color="secondary" onClick={changeRightview} style={{marginTop: "60px",position: "absolute",right: "28px"}}>
-            <SwitchCameraSharpIcon/>
-          </IconButton>
-          { renderElement() }
+    <div style={{ height: '80vh' }}>
+      <Sidebar width={300} height={'100%'} />
 
-
-          </Grid>
+      <Grid container>
+        <Grid item xs={6}>
+          <ImageCarousel />
         </Grid>
-      
+        <Grid item xs={6}>
+          <IconButton
+            color="secondary"
+            onClick={changeRightview}
+            style={{ marginTop: '60px', position: 'absolute', right: '28px' }}
+          >
+            <SwitchCameraSharpIcon />
+          </IconButton>
+          {renderElement()}
+        </Grid>
+      </Grid>
     </div>
   );
 };
