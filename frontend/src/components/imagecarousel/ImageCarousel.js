@@ -102,7 +102,7 @@ export default function ImageCarousel() {
   // Modal Classes End
 
   const galleryView = () => (
-    <div style={{ backgroundColor: "black" }}>
+    <div style={{ backgroundColor: "black",height: "115vh",overflowY: "scroll" }}>
       <Gallery photos={photos} onClick={openLightbox} />
 
       <input accept="image/*" className={classes.input} id="icon-button-file" type="file" />
