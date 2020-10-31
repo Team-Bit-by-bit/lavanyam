@@ -13,6 +13,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+
+
 import IconButton from '@material-ui/core/IconButton';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -60,9 +64,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
+
 export default function ImageCarousel() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
+  
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -84,9 +91,6 @@ export default function ImageCarousel() {
     antoine: false,
   });
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-  };
 
   const { gilad, jason, antoine } = state;
   const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
@@ -97,6 +101,12 @@ export default function ImageCarousel() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const [value, setValue] = React.useState('female');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
   // Modal Classes End
@@ -165,24 +175,16 @@ export default function ImageCarousel() {
             <div>
             <h2 id="transition-modal-title">Fashion Component</h2>
             <p id="transition-modal-description">Select the component of fashion to be extracted.</p>
-            <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend"></FormLabel>
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                label="T-Shirt"
-              />
-              <FormControlLabel
-                control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-                label="Pant"
-              />
-              <FormControlLabel
-                control={<Checkbox checked={antoine} onChange={handleChange} name="antoine" />}
-                label="Jacket"
-              />
-            </FormGroup>
-            <FormHelperText>Choose one</FormHelperText>
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Select one option</FormLabel>
+              <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                <FormControlLabel value="Shirt" control={<Radio />} label="Female" />
+                <FormControlLabel value="Jeans" control={<Radio />} label="Male" />
+                <FormControlLabel value="Hat" control={<Radio />} label="Other" />
+                <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
+              </RadioGroup>
             </FormControl>
+
             </div>
 
             <div>
