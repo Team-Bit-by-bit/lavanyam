@@ -37,8 +37,13 @@ const useStyles = makeStyles(theme => ({
 
 const Editor = ({ className, ...rest }) => {
   const [sketch, setOpen] = React.useState(false);
+  const [selected_state, setDisplaySelected] = React.useState(false);
 
   const classes = useStyles();
+  
+  const changeDisplaySelected = () => {
+    setDisplaySelected(!selected_state);
+  };
 
   const changeRightview = () => {
     setOpen(!sketch);
@@ -51,12 +56,12 @@ const Editor = ({ className, ...rest }) => {
 
   return (
     <div>
-      <Sidebar width={300} height={'130%'} />
+      <Sidebar width={300} height={'130%'} change_func={changeDisplaySelected}/>
       <div className={classes.container}>
         <Grid container className={classes.root} spacing={2}>
           <Grid key={0} item xs={6}>
             <Paper className={classes.paper} elevation={8}>
-              <ImageCarousel />
+              <ImageCarousel selected_state={selected_state} />
             </Paper>
           </Grid>
           <Grid key={1} item xs={6}>

@@ -8,25 +8,17 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
 
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 
 import IconButton from '@material-ui/core/IconButton';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import EditIcon from '@material-ui/icons/Edit';
-import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 import ReplayIcon from '@material-ui/icons/Replay';
-import FolderIcon from '@material-ui/icons/Folder';
 import Button from '@material-ui/core/Button';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import FormatShapesIcon from '@material-ui/icons/FormatShapes';
-import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
@@ -67,13 +59,25 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ImageCarousel() {
+export default function ImageCarousel ( selected_state ) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
+  console.log("Selected state is ",selected_state.selected_state);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [gallery_photos, setGalleryPic] = React.useState([]);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    if(selected_state.selected_state){
+      setGalleryPic(photos);
+    }
+    else
+    {
+      setGalleryPic([]);
+    }
+  },[selected_state.selected_state]);
 
   const [state, setState] = React.useState({
     gilad: true,
