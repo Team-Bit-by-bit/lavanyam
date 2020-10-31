@@ -17,7 +17,7 @@ const styles = {
     padding: '10px',
     paddingTop: '42px',
     margin: 'auto',
-    width: '675px'
+    width: '610px'
   },
 
   button: {
@@ -275,7 +275,7 @@ class DrawApp extends React.Component {
 
         <canvas
           ref="canvas"
-          width="675px"
+          width="590px"
           height="600px"
           style={styles.canvas}
           onMouseMove={e => this.drawing(e)}
