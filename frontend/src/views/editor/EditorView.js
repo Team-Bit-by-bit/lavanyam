@@ -51,7 +51,7 @@ const Editor = ({ className, ...rest }) => {
 
   return (
     <div>
-      <Sidebar width={300} height={'88%'} />
+      <Sidebar width={300} height={'130%'} />
       <div className={classes.container}>
         <Grid container className={classes.root} spacing={2}>
           <Grid key={0} item xs={6}>

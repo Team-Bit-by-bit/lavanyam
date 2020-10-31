@@ -84,25 +84,47 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         </RouterLink>
 
         <label htmlFor="icon-button-file">
-          <IconButton className={clsx(classes.button, className)} onClick={handleChange}>
+          <IconButton
+            className={clsx(classes.button, className)}
+            onClick={handleChange}
+          >
             <FormatColorFillIcon />
           </IconButton>
         </label>
 
         <label htmlFor="icon-button-file">
-          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+          <IconButton
+            onClick={handleChange}
+            className={clsx(classes.button, className)}
+          >
             <FileCopyIcon />
           </IconButton>
         </label>
 
-        <label htmlFor="icon-button-file">
-          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+        <label htmlFor="file-upload">
+          <IconButton
+            onClick={handleChange}
+            aria-label="upload folder"
+            component="span"
+            className={clsx(classes.button, className)}
+          >
             <FolderIcon />
           </IconButton>
         </label>
 
+        <input
+          id="file-upload"
+          type="file"
+          directory=""
+          webkitdirectory=""
+          // onChange={}
+        />
+
         <label htmlFor="icon-button-file">
-          <IconButton onClick={handleChange} className={clsx(classes.button, className)}>
+          <IconButton
+            onClick={handleChange}
+            className={clsx(classes.button, className)}
+          >
             <SaveIcon />
           </IconButton>
         </label>
