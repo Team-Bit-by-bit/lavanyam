@@ -27,6 +27,10 @@ import FolderIcon from '@material-ui/icons/Folder';
 import Button from '@material-ui/core/Button';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import FormatShapesIcon from '@material-ui/icons/FormatShapes';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
+import DoneIcon from '@material-ui/icons/Done';
 
 
 // Changes required
@@ -51,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
     '& > *': {
       margin: theme.spacing(1),
     },
@@ -69,7 +75,13 @@ export default function ImageCarousel() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-  
+  const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  };
+
+  const handleClick = () => {
+    console.info('You clicked the Chip.');
+  };
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -127,6 +139,18 @@ export default function ImageCarousel() {
 
   const selectionView = () => (
     <div style={{ backgroundColor: "black",height: "119vh",overflowY: "scroll"  }}>
+      
+      <div padding="100px">
+      <Chip
+        icon={<FaceIcon />}
+        label="Selected Image"
+        clickable
+        color="primary"
+        onDelete={handleDelete}
+        deleteIcon={<DoneIcon />}
+      />
+      </div>
+
       <Carousel
         currentIndex={currentImage}
         views={photos.map((x) => ({
