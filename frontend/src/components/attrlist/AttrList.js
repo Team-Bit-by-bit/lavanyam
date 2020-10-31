@@ -5,13 +5,17 @@ import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
+import {sidemenu_items} from './Cat_list';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '100%'
+    height: '40%'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -40,25 +44,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const items = [
-  {
-    name: 'Polo',
-    src: '/static/images/avatars/avatar_6.png'
-  },
-  {
-    name: 'Hash Code',
-    src: '/static/images/avatars/avatar_6.png'
-  },
-  {
-    name: 'Terrio',
-    src: '/static/images/avatars/avatar_6.png'
-  },
-  {
-    name: 'React Carousel',
-    src: '/static/images/avatars/avatar_6.png'
-  }
-];
-
 const AttrList = ({ className, ...rest }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -70,7 +55,48 @@ const AttrList = ({ className, ...rest }) => {
   return (
     <div className={classes.root} style={{paddingTop: "12px"}}>
 
+      {sidemenu_items.map(items => (
 
+          <Accordion
+          expanded={expanded === "panel"+(items.id)}
+          onChange={handleChange('panel'+(items.id)) }
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1bh-content"
+            id="panel1bh-header"
+          >
+            <Typography className={classes.heading}>{items.name}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+
+          <FormControl component="fieldset">
+            <RadioGroup aria-label={items.name} name="gender1">
+            {items.childs.map(tile => (
+              <FormControlLabel value={tile.name} control={<Radio />} label={tile.name} />
+                  ))}
+              </RadioGroup>
+            </FormControl>
+
+            {/* <GridList className={classes.gridList} cols={2.5}>
+              {items.childs.map(tile => (
+                <GridListTile key={tile.name}>
+                  <img src={tile.src} alt={tile.name} />
+                  <GridListTileBar
+                    title={tile.name}
+                    classes={{
+                      root: classes.titleBar,
+                      title: classes.title
+                    }}
+                  />
+                </GridListTile>
+              ))}
+            </GridList> */}
+          </AccordionDetails>
+        </Accordion>
+
+      ))}
+{/* 
       <Accordion
         expanded={expanded === 'panel1'}
         onChange={handleChange('panel1')}
@@ -83,19 +109,6 @@ const AttrList = ({ className, ...rest }) => {
           <Typography className={classes.heading}>Textile</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          {/* <Carousel
-            className="SecondExample"
-            autoPlay="false"
-            animation="slide"
-            indicators="true"
-            timeout="800"
-            navButtonsAlwaysVisible="true"
-            navButtonsAlwaysInvisible="true"
-             >
-            {items.map((item, key) => {
-              return <img src={item.src} alt={item.name} key={item.name} style={{height:"200px"}}/>;
-            })}
-          </Carousel> */}
           <GridList className={classes.gridList} cols={2.5}>
             {items.map(tile => (
               <GridListTile key={tile.name}>
@@ -227,7 +240,7 @@ const AttrList = ({ className, ...rest }) => {
             ))}
           </GridList>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
    
     </div>
   );

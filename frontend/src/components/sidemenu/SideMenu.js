@@ -25,31 +25,16 @@ import AttrList from '../../components/attrlist/AttrList';
 
 const Categories = [
   {
-    value: 'ABC',
-    text: 'ABC'
+    value: 'Shirts',
+    text: 'Shirts'
   },
   {
-    value: 'XYZ',
-    text: 'XYZ'
+    value: 'Pants',
+    text: 'Pants'
   },
   {
-    value: 'PQR',
-    text: 'PQR'
-  }
-];
-
-const Attributes = [
-  {
-    value: 'ABC',
-    text: 'ABC'
-  },
-  {
-    value: 'XYZ',
-    text: 'XYZ'
-  },
-  {
-    value: 'PQR',
-    text: 'PQR'
+    value: 'Dresses',
+    text: 'Dresses'
   }
 ];
 
@@ -93,7 +78,7 @@ const handleSearchClick = event => {
   console.log(searchFieldText);
 };
 
-const Sidebar = ({ width, height, children }) => {
+const Sidebar = ({ width, height, children,change_func }) => {
   const classes = useStyles();
 
   const [img_path, changeURL] = useState(() => setinitialURL());
@@ -204,7 +189,6 @@ const Sidebar = ({ width, height, children }) => {
                     {Categories.map(type => (
                       <MenuItem value={type.value}>{type.text}</MenuItem>
                     ))}
-                  
                   </Select>
                 </FormControl>
               </Grid>
@@ -337,6 +321,12 @@ const Sidebar = ({ width, height, children }) => {
             </Dialog> */}
           </div>
           <AttrList></AttrList>
+
+          <Button onClick={change_func} variant="contained" color="primary" disableElevation style={{position:"inherit",marginLeft: "auto",display: "block",marginRight: "auto"}}>
+            Select
+          </Button>
+
+
         </div>
       </div>
     </React.Fragment>
