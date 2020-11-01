@@ -11,24 +11,36 @@ export default function SimpleContainer( mask_img ) {
   useEffect(() => {
     // Update the document title using the browser API
     console.log(mask_img);
+
+    // 0 - No Image
+    // 1 - Garment from reference
+    // 2 - Color change
+    // 3 - 
+    // 4 - Texture change
+    // 5 - Sketch translation
+
     if(mask_img.mask_img==0){
       setImgSrc("");
     }
     else if(mask_img.mask_img==1)
     {
-      setImgSrc("https://pngimg.com/uploads/dress/dress_PNG115.png");
+      setImgSrc("/static/images/mask.png");
     }
     else if(mask_img.mask_img==2)
     {
-      setImgSrc("/state/images/");
+      setImgSrc("/static/images/red.png");
     }
     else if(mask_img.mask_img==3)
     {
-      setImgSrc("/state/images/");
+      setImgSrc("/static/images/sketch.png");
     }
-    else 
+    else if(mask_img.mask_img==4)
     {
-      setImgSrc("https://pngimg.com/uploads/dress/dress_PNG115.png");
+      setImgSrc("/static/images/structure.png");
+    }
+    else if(mask_img.mask_img==5)
+    {
+      setImgSrc("/static/images/sketch.png");
     }
     
   },[mask_img.mask_img]);

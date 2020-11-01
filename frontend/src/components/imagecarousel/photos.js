@@ -30,12 +30,12 @@ export const photos = [
       height: 1
     },
     {
-      src: "https://www.neimanmarcus.com/product_assets/T/1/2/0/8/NMT1208_mk.jpg",
+      src: "https://pc-ap.rtrcdn.com/productimages/front/270x/bb/VIB3.jpg",
       width: 1,
       height: 1
     },
     {
-      src: "https://www.evavarro.com/565-thickbox_default/sleeveless-double-u-below-knee-tank-dress.jpg",
+      src: "https://media.lexception.com/img/products/sarah-de-saint-hubert/96706-sarah-de-saint-hubert-robemilonguemancheslonguescolroulnina-01-0800-0800.jpg",
       width: 1,
       height: 1
     },

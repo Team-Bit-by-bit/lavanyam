@@ -11,7 +11,7 @@ import Icon from '@material-ui/core/Icon';
 const styles = {
   canvas: {
     border: '1px solid #333',
-    margin: '20px 0px'
+    margin: '20px 0px',
   },
 
   maindiv: {
@@ -224,7 +224,7 @@ class DrawApp extends React.Component {
           style={{marginLeft:"10px"}}
             variant="contained"
             color="primary"
-            onClick={() => this.props.change_mask(4)}
+            onClick={() => this.props.change_mask(5)}
           >
             Upload
           </Button>
@@ -294,7 +294,7 @@ class DrawApp extends React.Component {
           onMouseMove={e => this.drawing(e)}
           onMouseDown={e => this.penDown(e)}
           onMouseUp={e => this.penUp(e)}
-        ></canvas>
+        ></canvas>        
       </div>
     );
   }

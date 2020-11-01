@@ -19,7 +19,10 @@ import ReplayIcon from '@material-ui/icons/Replay';
 import Button from '@material-ui/core/Button';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import FormatShapesIcon from '@material-ui/icons/FormatShapes';
+import TextureIcon from '@material-ui/icons/Texture';
+import EditAttributesIcon from '@material-ui/icons/EditAttributes';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import AddToHomeScreenIcon from '@material-ui/icons/AddToHomeScreen';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
@@ -229,14 +232,14 @@ export default function ImageCarousel(selected_state) {
       </IconButton>
 
       <IconButton color="secondary" onClick={handleOpen}>
-        <AddCircleIcon />
+        <EditAttributesIcon />
       </IconButton>
 
       <IconButton
         color="secondary"
         onClick={() => selected_state.change_mask(1)}
       >
-        <FormatShapesIcon />
+        <AddToHomeScreenIcon />
       </IconButton>
 
       <IconButton
@@ -246,12 +249,20 @@ export default function ImageCarousel(selected_state) {
         <ColorLensIcon />
       </IconButton>
 
-      <IconButton
+      {/* <IconButton
         color="secondary"
         onClick={() => selected_state.change_mask(3)}
       >
         <ArrowForwardIcon />
+      </IconButton> */}
+      
+      <IconButton
+        color="secondary"
+        onClick={() => selected_state.change_mask(4)}
+      >
+        <TextureIcon />
       </IconButton>
+
 
       {/* <IconButton color="secondary" onClick={closeLightbox}>
         <AddAPhotoIcon /> 
@@ -285,20 +296,16 @@ export default function ImageCarousel(selected_state) {
                   onChange={handleChange}
                 >
                   <FormControlLabel
-                    value="Shirt"
-                    control={<Radio />}
-                    label="Shirt"
-                  />
-                  <FormControlLabel
-                    value="Jeans"
-                    control={<Radio />}
-                    label="Jeans"
-                  />
-                  <FormControlLabel
                     value="Dress"
                     control={<Radio />}
                     label="Dress"
                   />
+                  <FormControlLabel
+                    value="Shoes"
+                    control={<Radio />}
+                    label="Shoes"
+                  />
+                  
                 </RadioGroup>
               </FormControl>
             </div>

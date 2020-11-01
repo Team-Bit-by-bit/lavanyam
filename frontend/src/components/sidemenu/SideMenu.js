@@ -27,8 +27,8 @@ const Categories = [
     text: 'Pants'
   },
   {
-    value: 'Dresses',
-    text: 'Dresses'
+    value: 'Dress',
+    text: 'Dress'
   }
 ];
 

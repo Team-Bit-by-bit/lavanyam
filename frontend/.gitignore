@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/public/static/photos
+/public/static/dataset
 # testing
 /coverage
 
