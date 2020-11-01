@@ -1,4 +1,4 @@
-import React, { useState, useCallback,useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Gallery from 'react-photo-gallery';
 import Carousel from 'react-images';
 import { photos } from './photos';
@@ -19,6 +19,7 @@ import ReplayIcon from '@material-ui/icons/Replay';
 import Button from '@material-ui/core/Button';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import FormatShapesIcon from '@material-ui/icons/FormatShapes';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
@@ -59,25 +60,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ImageCarousel ( selected_state ) {
+export default function ImageCarousel(selected_state) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-  console.log("Selected state is ",selected_state.selected_state);
+  console.log('Selected state is ', selected_state);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [gallery_photos, setGalleryPic] = React.useState([]);
 
   useEffect(() => {
     // Update the document title using the browser API
-    if(selected_state.selected_state){
+    if (selected_state.selected_state) {
       setGalleryPic(photos);
-    }
-    else
-    {
+    } else {
       setGalleryPic([]);
     }
-  },[selected_state.selected_state]);
+  }, [selected_state.selected_state]);
 
   const [state, setState] = React.useState({
     gilad: true,
@@ -87,7 +86,7 @@ export default function ImageCarousel ( selected_state ) {
 
   const { gilad, jason, antoine } = state;
   const error = [gilad, jason, antoine].filter(v => v).length !== 2;
- 
+
   const handleDelete = () => {
     console.info('You clicked the delete icon.');
   };
@@ -107,13 +106,13 @@ export default function ImageCarousel ( selected_state ) {
   };
 
   // Modal Classes Start
-  
+
   const handleOpen = () => {
     setOpen(true);
     // Ajax request to get the category datas
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:5000/test?image_id='+currentImage,
+      url: 'http://localhost:5000/test?image_id=' + currentImage,
       error: function(data) {
         console.log('Error in getting data from API: ', data);
       },
@@ -122,7 +121,6 @@ export default function ImageCarousel ( selected_state ) {
         setGalleryPic(data['photos']);
       }
     });
-    
   };
 
   const handleClose = () => {
@@ -143,13 +141,13 @@ export default function ImageCarousel ( selected_state ) {
     var temp_gallery = [];
     // var i = 0;
     for (var i = 0; i < event.length; i++) {
-        var singleObj = {};
-        singleObj['src'] = "/static/" +  event[i].webkitRelativePath;
-        singleObj['id'] = i;
-        singleObj['height'] = 1;
-        singleObj['width'] = 1;
-        temp_gallery.push(singleObj);
-    };
+      var singleObj = {};
+      singleObj['src'] = '/static/' + event[i].webkitRelativePath;
+      singleObj['id'] = i;
+      singleObj['height'] = 1;
+      singleObj['width'] = 1;
+      temp_gallery.push(singleObj);
+    }
     setGalleryPic(temp_gallery);
 
     // const data = new FormData();
@@ -171,7 +169,6 @@ export default function ImageCarousel ( selected_state ) {
     //     setGalleryPic(data['photos']);
     //   }
     // });
-
   };
   // Modal Classes End
 
@@ -192,14 +189,13 @@ export default function ImageCarousel ( selected_state ) {
       </label>
 
       <input
-          accept="image/*"
-          id="folder-upload"
-          type="file"
-          directory=""
-          webkitdirectory=""
-          onChange={e => handleAddImgChange(e.target.files)}
-        />
-
+        accept="image/*"
+        id="folder-upload"
+        type="file"
+        directory=""
+        webkitdirectory=""
+        onChange={e => handleAddImgChange(e.target.files)}
+      />
     </div>
   );
 
@@ -236,12 +232,25 @@ export default function ImageCarousel ( selected_state ) {
         <AddCircleIcon />
       </IconButton>
 
-      <IconButton color="secondary" onClick={closeLightbox}>
+      <IconButton
+        color="secondary"
+        onClick={() => selected_state.change_mask(1)}
+      >
+        <FormatShapesIcon />
+      </IconButton>
+
+      <IconButton
+        color="secondary"
+        onClick={() => selected_state.change_mask(2)}
+      >
         <ColorLensIcon />
       </IconButton>
 
-      <IconButton color="secondary" onClick={closeLightbox}>
-        <FormatShapesIcon />
+      <IconButton
+        color="secondary"
+        onClick={() => selected_state.change_mask(3)}
+      >
+        <ArrowForwardIcon />
       </IconButton>
 
       {/* <IconButton color="secondary" onClick={closeLightbox}>
@@ -311,5 +320,5 @@ export default function ImageCarousel ( selected_state ) {
     </div>
   );
 
-  return viewerIsOpen? selectionView(): galleryView()
+  return viewerIsOpen ? selectionView() : galleryView();
 }

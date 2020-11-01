@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Icon from '@material-ui/core/Icon';
 
 const styles = {
   canvas: {
@@ -51,9 +52,9 @@ class DrawApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        cursorType: 1,
-        counter: 1
-      };
+      cursorType: 1,
+      counter: 1
+    };
   }
 
   componentDidMount() {
@@ -62,14 +63,14 @@ class DrawApp extends React.Component {
 
   setType(e) {
     if (e.target.value == 1) {
-        this.setState({
-            cursorType: 1
-        });  
+      this.setState({
+        cursorType: 1
+      });
       this.draw();
     } else {
-        this.setState({
-            cursorType: 2
-          });
+      this.setState({
+        cursorType: 2
+      });
       this.erase();
     }
   }
@@ -202,7 +203,11 @@ class DrawApp extends React.Component {
             style={{ padding: '20px' }}
           >
             <Button onClick={this.handleIncrement}>+</Button>
-            {displayCounter && <Button disabled style={{color:"black"}}>{this.state.counter} </Button>}
+            {displayCounter && (
+              <Button disabled style={{ color: 'black' }}>
+                {this.state.counter}{' '}
+              </Button>
+            )}
             {displayCounter && (
               <Button onClick={this.handleDecrement}>-</Button>
             )}
@@ -214,6 +219,14 @@ class DrawApp extends React.Component {
             color="secondary"
           >
             RESET
+          </Button>
+          <Button
+          style={{marginLeft:"10px"}}
+            variant="contained"
+            color="primary"
+            onClick={() => this.props.change_mask(4)}
+          >
+            Upload
           </Button>
         </div>
         <div>

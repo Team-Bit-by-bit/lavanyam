@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
 const Editor = ({ className, ...rest }) => {
   const [sketch, setOpen] = React.useState(false);
   const [selected_state, setDisplaySelected] = React.useState(false);
+  const [mask_no, setMaskView] = React.useState(0);
 
   const classes = useStyles();
   
@@ -45,13 +46,17 @@ const Editor = ({ className, ...rest }) => {
     setDisplaySelected(!selected_state);
   };
 
+  const changeMaskNo = (val) => {
+    setMaskView(val);
+  }
+
   const changeRightview = () => {
     setOpen(!sketch);
   };
 
   const renderElement = () => {
-    if (sketch) return <DrawApp />;
-    else return <SketchImage />;
+    if (sketch) return <DrawApp change_mask={changeMaskNo} />;
+    else return <SketchImage mask_img={mask_no} />;
   };
 
   return (
@@ -61,7 +66,7 @@ const Editor = ({ className, ...rest }) => {
         <Grid container className={classes.root} spacing={2}>
           <Grid key={0} item xs={6}>
             <Paper className={classes.paper} elevation={8}>
-              <ImageCarousel selected_state={selected_state} />
+              <ImageCarousel selected_state={selected_state} change_mask={changeMaskNo} />
             </Paper>
           </Grid>
           <Grid key={1} item xs={6}>
