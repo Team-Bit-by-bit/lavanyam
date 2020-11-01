@@ -287,30 +287,24 @@ export default function ImageCarousel(selected_state) {
                   <FormControlLabel
                     value="Shirt"
                     control={<Radio />}
-                    label="Female"
+                    label="Shirt"
                   />
                   <FormControlLabel
                     value="Jeans"
                     control={<Radio />}
-                    label="Male"
+                    label="Jeans"
                   />
                   <FormControlLabel
-                    value="Hat"
+                    value="Dress"
                     control={<Radio />}
-                    label="Other"
-                  />
-                  <FormControlLabel
-                    value="disabled"
-                    disabled
-                    control={<Radio />}
-                    label="(Disabled option)"
+                    label="Dress"
                   />
                 </RadioGroup>
               </FormControl>
             </div>
 
             <div>
-              <Button variant="contained" color="primary" position="bottom">
+              <Button onClick={handleClose} variant="contained" color="primary" position="bottom">
                 Select
               </Button>
             </div>
