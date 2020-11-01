@@ -19,26 +19,26 @@ export default function SimpleContainer( mask_img ) {
     // 4 - Texture change
     // 5 - Sketch translation
 
-    if(mask_img.mask_img==0){
+    if(mask_img.mask_img===0){
       setImgSrc("");
     }
-    else if(mask_img.mask_img==1)
+    else if(mask_img.mask_img===1)
     {
       setImgSrc("/static/images/mask.png");
     }
-    else if(mask_img.mask_img==2)
+    else if(mask_img.mask_img===2)
     {
       setImgSrc("/static/images/red.png");
     }
-    else if(mask_img.mask_img==3)
+    else if(mask_img.mask_img===3)
     {
       setImgSrc("/static/images/sketch.png");
     }
-    else if(mask_img.mask_img==4)
+    else if(mask_img.mask_img===4)
     {
       setImgSrc("/static/images/structure.png");
     }
-    else if(mask_img.mask_img==5)
+    else if(mask_img.mask_img===5)
     {
       setImgSrc("/static/images/sketch.png");
     }
